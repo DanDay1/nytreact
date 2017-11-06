@@ -22087,25 +22087,26 @@
 	        React.createElement(
 	          "h1",
 	          { className: "text-center" },
-	          React.createElement("img", { style: { width: "70%" }, src: "img/nyt-header.svg", alt: "The New York Times" })
+	          React.createElement("img", { style: { width: "70%" }, src: "img/timesmachine.png", alt: "Times Machine" })
 	        ),
 	        React.createElement(
 	          "h2",
-	          { className: "text-center", style: { marginTop: "-12px" } },
+	          { className: "text-center", style: { marginTop: "-8px" } },
 	          React.createElement(
 	            "b",
 	            null,
-	            React.createElement(
-	              "i",
-	              null,
-	              "A React Rendition"
-	            )
+	            "The Unofficial New York Times Archive Search"
+	            // React.createElement(
+	            //   "i",
+	            //   null,
+	              
+	            // )
 	          )
 	        ),
 	        React.createElement(
 	          "h4",
 	          { className: "text-center" },
-	          "Search for and annotate articles of interest. Click on headlines to learn more."
+	          "Select any topic to search, as well as years to look in the archives."
 	        )
 	      ),
 	      React.createElement(Query, { _setSearchFeilds: this._setSearchFeilds }),
@@ -22182,18 +22183,18 @@
 	      { className: "panel panel-default" },
 	      React.createElement(
 	        "div",
-	        { className: "panel-heading" },
+	        { className: "panel-heading", style: {backgroundColor: "#D7E8FE"} },
 	        React.createElement(
 	          "h3",
 	          { className: "panel-title text-center", style: { fontSize: "20px" } },
-	          React.createElement(
-	            "i",
-	            null,
+	          // React.createElement(
+	          //   "i",
+	          //   null,
 	            React.createElement(
 	              "b",
 	              null,
 	              "Search"
-	            )
+	            // )
 	          )
 	        )
 	      ),
@@ -22238,7 +22239,7 @@
 	          React.createElement("br", null),
 	          React.createElement(
 	            "button",
-	            { type: "submit", className: "btn btn-info col-md-offset-5 col-md-2", id: "searchBtn" },
+	            { type: "submit", className: "btn btn-info col-md-offset-5 col-md-2", id: "searchBtn", style: {backgroundColor: "#CBCBCB", color: "black"} },
 	            "Search"
 	          )
 	        )
@@ -22318,18 +22319,18 @@
 	      { className: "panel panel-default" },
 	      React.createElement(
 	        "div",
-	        { className: "panel-heading" },
+	        { className: "panel-heading", style: { backgroundColor: "#D7E8FE" } },
 	        React.createElement(
 	          "h3",
 	          { className: "panel-title text-center", style: { fontSize: "20px" } },
-	          React.createElement(
-	            "i",
-	            null,
+	          // React.createElement(
+	            // "i",
+	            // null,
 	            React.createElement(
 	              "b",
 	              null,
 	              "Results"
-	            )
+	            // )
 	          )
 	        )
 	      ),
@@ -24147,18 +24148,18 @@
 	      { className: "panel panel-default" },
 	      React.createElement(
 	        "div",
-	        { className: "panel-heading" },
+	        { className: "panel-heading", style: {backgroundColor: "#D7E8FE" } },
 	        React.createElement(
 	          "h3",
 	          { className: "panel-title text-center", style: { fontSize: "20px" } },
-	          React.createElement(
-	            "i",
-	            null,
+	          // React.createElement(
+	          //   "i",
+	          //   null,
 	            React.createElement(
 	              "b",
 	              null,
-	              "Saved Articles"
-	            )
+	              "Saved"
+	            // )
 	          )
 	        )
 	      ),

@@ -50,7 +50,7 @@ var Saved = React.createClass({
       <div className="panel panel-default">
 
         <div className="panel-heading">
-          <h3 className="panel-title text-center" style={ {fontSize: "20px"} }><i><b>Saved Articles</b></i></h3>
+          <h3 className="panel-title text-center" style={ {fontSize: "20px"} }><i><b>Saved</b></i></h3>
         </div>
 
         <div className="panel-body">

@@ -22,13 +22,15 @@ app.use(express.static(process.cwd() + '/public'));
 // Database Configuration with Mongoose
 // ---------------------------------------------------------------------------------------------------------------
 // Connect to localhost if not a production environment
-if(process.env.NODE_ENV == 'production'){
-  // Gotten using `heroku config | grep MONGODB_URI` command in Command Line
-  mongoose.connect('mongodb://heroku_kbdv0v69:860jh71jd1iu5m5639gjr0gg9l@ds129028.mlab.com:29028/heroku_kbdv0v69');
-}
-else{
-  mongoose.connect('mongodb://localhost/nytreact');
-}
+// if(process.env.NODE_ENV == 'production'){
+//   // Gotten using `heroku config | grep MONGODB_URI` command in Command Line
+//   mongoose.connect('mongodb://heroku_kbdv0v69:860jh71jd1iu5m5639gjr0gg9l@ds129028.mlab.com:29028/heroku_kbdv0v69');
+// }
+// else{
+//   mongoose.connect('mongodb://localhost/nytreact');
+// }
+//the following line added while the above section is commented out:
+mongoose.connect('mongodb://localhost/nytreact');
 var db = mongoose.connection;
 
 // Show any Mongoose errors
