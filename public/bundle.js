@@ -22008,27 +22008,26 @@
 
 	"use strict";
 	
-	// Contains the main-container div that holds the main layout and navigation. 
-	// This component should also be able to hold sub-components Search and Saved
+	// Contains main-container div that holds main layout and navigation. 
+	// This component should also be able to hold sub-components Search and Saved.
 	
 	// Include React
 	var React = __webpack_require__(/*! react */ 1);
 	
-	// UN COMMENT ALL THESE LATER!
-	// Here we include all of the sub-components
+	// Include all sub-components
 	var Query = __webpack_require__(/*! ./Query.jsx */ 179);
 	var Search = __webpack_require__(/*! ./Search.jsx */ 180);
 	var Saved = __webpack_require__(/*! ./Saved.jsx */ 207);
 	
-	// Requiring our helper for making API calls
+	// Require helper for making API calls
 	var helpers = __webpack_require__(/*! ../utils/helpers.js */ 181);
 	
-	// Create the Main Component
+	// Create Main Component
 	var Main = React.createClass({
 	  displayName: "Main",
 	
 	
-	  // Here we set a generic state
+	  // Set generic state
 	  getInitialState: function getInitialState() {
 	    return {
 	      apiResults: [],
@@ -22050,33 +22049,26 @@
 	  // After the Main renders, collect the saved articles from the API endpoint
 	  componentDidMount: function componentDidMount() {
 	
-	    // Hit the Mongo API to get saved articles
+	    // Hit Mongo API to get saved articles
 	    helpers.apiGet().then(function (query) {
 	      this.setState({ mongoResults: query.data });
 	    }.bind(this));
-	
-	    // console.log('API Results')
-	    // console.log(this.state.apiResults)
-	
-	    // console.log('')
-	    // console.log('Mongo Results')
-	    // console.log(this.state.mongoResults)
 	  },
 	
-	  // If the component changes (i.e. if a search is entered)...
+	  // If component changes (i.e. if a search is entered)
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
 	
-	    // Only hit the API once; i.e. if the prev state does not equal the current
+	    // Only hit the API once (i.e. if prev state does not equal current)
 	    if (this.state.searchTerms != prevState.searchTerms) {
 	      // Run the query for the address
 	      helpers.articleQuery(this.state.searchTerms[0], this.state.searchTerms[1], this.state.searchTerms[2]).then(function (data) {
-	        //console.log(data);
+	      
 	        this.setState({ apiResults: data });
 	      }.bind(this));
 	    }
 	  },
 	
-	  // Here we render the function
+	  // Render the function
 	  render: function render() {
 	    return React.createElement(
 	      "div",
@@ -22116,7 +22108,7 @@
 	  }
 	});
 	
-	// Export the component back for use in other files
+	// Export component back for use in other files
 	module.exports = Main;
 
 /***/ },
@@ -22128,19 +22120,19 @@
 
 	"use strict";
 	
-	// Queries the NYT API for articles. 
-	// Contains the user's search form.
+	// Queries NYT API for articles. 
+	// Contains user's search form.
 	
 	
 	// Include React
 	var React = __webpack_require__(/*! react */ 1);
 	
-	// Create the Search Component
+	// Create Search component
 	var Query = React.createClass({
 	  displayName: "Query",
 	
 	
-	  // Here we set a generic state
+	  // Set generic state
 	  getInitialState: function getInitialState() {
 	    return {
 	      topic: "",
@@ -22149,19 +22141,17 @@
 	    };
 	  },
 	
-	  // When a user submits...
+	  // When a user submits
 	  _handleSubmit: function _handleSubmit(event) {
-	    // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
-	    // clicking the button
+
+	  	// prevent HTML from trying to submit form if user hits enter key instead of
+    	// clicking search button
+
 	    event.preventDefault();
 	
-	    // Set the parent to have the search terms
+	    // Set parent to have search terms
 	    this.props._setSearchFeilds(this.state.topic, this.state.startYear, this.state.endYear);
 	
-	    // Reset the search terms
-	    // this.setState({topic: ""});
-	    // this.setState({startYear: ""});
-	    // this.setState({endYear: ""});
 	  },
 	
 	  _handleTopicChange: function _handleTopicChange(e) {
@@ -22176,7 +22166,7 @@
 	    this.setState({ endYear: e.target.value });
 	  },
 	
-	  // Here we render the Query User Form
+	  // Render Query User Form
 	  render: function render() {
 	    return React.createElement(
 	      "div",
@@ -22248,7 +22238,7 @@
 	  }
 	});
 	
-	// Export the component back for use in Main file
+	// Export component back for use Main file
 	module.exports = Query;
 
 /***/ },
@@ -22259,22 +22249,22 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	// Displays API search results from another possible Query component and Results component. 
-	// Gives the user the ability to save an article to their Saved Articles.
+	// Gives user ability to save an article to "Saved."
 	
 	// Include React
 	var React = __webpack_require__(/*! react */ 1);
 	
-	// Requiring our helper for making API calls
+	// Requiring helper for making API calls
 	var helpers = __webpack_require__(/*! ../utils/helpers.js */ 181);
 	
-	// Create the Search Component
+	// Create Search Component
 	var Search = React.createClass({
 	  displayName: "Search",
 	
 	
-	  // Here we set a generic state
+	  // Set generic state
 	  getInitialState: function getInitialState() {
 	    return {
 	      arrayOfArticles: []
@@ -22283,10 +22273,10 @@
 	
 	  _handleSave: function _handleSave(event) {
 	
-	    // Collect the clicked article's id
+	    // Collect clicked article's id
 	    var articleId = event.target.value;
 	
-	    // Collect the clicked article's attributes
+	    // Collect clicked article's attributes
 	    var saveArticleObj;
 	    for (var i = 0; i < this.state.arrayOfArticles.length; i++) {
 	      if (this.state.arrayOfArticles[i].id == articleId) {
@@ -22294,24 +22284,23 @@
 	      }
 	    }
 	
-	    // Copy "this" into "that" so that component is accessible inside the functions.
+	    // Copy "this" into "that" so that component is accessible inside the functions
 	    var that = this;
 	
-	    // Send this data to the API endpoint to save it to Mongo
+	    // Send this data to API endpoint to save it to Mongo
 	    helpers.apiSave(saveArticleObj).then(function () {
-	
-	      // Re-set the Mongo data to account for a change in database (i.e. added an article)
-	      // By Querying Mongo Again for new Data, this will re-render the components in saved.jsx
+
+	    // Re-set Mongo data to account for change in database (i.e. added article)
+      	// By Querying Mongo Again for new Data, this will re-render components in saved.jsx
 	      helpers.apiGet().then(function (query) {
 	        that.props._resetMongoResults(query.data);
 	      });
 	    }.bind(this));
 	  },
 	
-	  // Here we render the Search Results Panel
+	  // Render Results Panel
 	  render: function render() {
 	
-	    // http://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
 	    var that = this;
 	
 	    return React.createElement(
@@ -22368,7 +22357,10 @@
 	                      search.headline.main
 	                    )
 	                  ),
+
+	                  //This next line is for possible future changes to layout:
 	                  // React.createElement("br", null),
+
 					// search.pub_date,
 	                  React.createElement(
 	                    "i",
@@ -22395,7 +22387,7 @@
 	  }
 	});
 	
-	// Export the component back for use in Main file
+	// Export component back for use in Main file
 	module.exports = Search;
 
 /***/ },
@@ -22415,35 +22407,33 @@
 
 	var authKey = "f96ef2076ae2454da0339e3836db6986";
 	
-	  // var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
-	
 	  var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + topic + "&begin_date=" + beginYear + "0101" + "&end_date=" + endYear + "1231";
 	
-	  // Create a JavaScript *Promise*
+	  // Create JavaScript *Promise*
 	  return new Promise(function (fulfill, reject) {
 	    // NY Times API get request
 	    axios.get(queryURL).then(function (response) {
 	
 	      var result = [];
 	
-	      // If get get a result, return only the first 5 articles
+	      // If results return, return only the first 5 articles
 	      if (response.data.response.docs[0]) {
 	
 	        for (var i = 0; i < response.data.response.docs.length; i++) {
-	          // Break out of the loop if there are more than 5 entries
+	          // Break out of loop if there are more than 5 entries
 	
 	          if (i ==5) {
 	            break;
 	          } else {
-	            // Otherwise, push to results array
+	            // Else, push to results array
 	            result.push(response.data.response.docs[i]);
 	          }
 	        }
 	
-	        // Return the array of articles via *Promise*
+	        // Return array of articles via *Promise*
 	        fulfill(result);
 	      } else {
-	        // If we don't get any results, return an empty string via *Promise*
+	        // If no results, return empty string via *Promise*
 	        reject("");
 	      }
 	    });
@@ -22459,7 +22449,7 @@
 	  // Create a JavaScript *Promise*
 	  return new Promise(function (fulfill, reject) {
 	
-	    // Re-format the article Object to match the Mongo Model (ie we need to take off the the id)
+	    // Re-format article Object to match Mongo Model (ie; we need to take off the id)
 	    var params = new URLSearchParams();
 	    params.append("title", articleObj.title);
 	    params.append("date", articleObj.date);
@@ -22482,10 +22472,10 @@
 	  // Get API Post URL (this allows it to work in both localhost and heroku)
 	  var apiURL = window.location.origin + '/api/saved';
 	
-	  // Create a JavaScript *Promise*
+	  // Create JavaScript *Promise*
 	  return new Promise(function (fulfill, reject) {
 	
-	    // Re-format the article Object to match the Mongo Model (ie we need to take off the the id)
+	    // Re-format article Object to match Mongo Model (ie; we need to take off the the id)
 	    axios.get(apiURL).then(function (response) {
 	
 	      // Error handling / fullfil promise if successful query
@@ -22504,10 +22494,10 @@
 	  // Get API Post URL (this allows it to work in both localhost and heroku)
 	  var apiURL = window.location.origin + '/api/delete/' + deleteArticleId;
 	
-	  // Create a JavaScript *Promise*
+	  // Create JavaScript *Promise*
 	  return new Promise(function (fulfill, reject) {
 	
-	    // Send the MongoDB Id for deletion
+	    // Send MongoDB Id for deletion
 	    axios.post(apiURL).then(function (response) {
 	
 	      // Error handling / fullfil promise if successful query

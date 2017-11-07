@@ -1,31 +1,29 @@
 module.exports = {
 
-  // This is the entry point or start of our react applicaton
-  entry: "./app/app.jsx",
+    // Entry point (or start) of react applicaton
+    entry: "./app/app.jsx",
 
-  // The plain compiled Javascript will be output into this file
-  output: {
-    filename: "public/bundle.js"
-  },
+    // Output plain compiled Javascript 
+    output: {
+        filename: "public/bundle.js"
+    },
 
-  // This section desribes the transformations we will perform
-  module: {
-    loaders: [
-      {
-        // Only working with files that in in a .js or .jsx extension
-        test: /\.jsx?$/,
-        // Webpack will only process files in our app folder. This avoids processing
-        // node modules and server files unnecessarily
-        include: /app/,
-        loader: "babel",
-        query: {
-          // These are the specific transformations we'll be using.
-          presets: ["react", "es2015"]
-        }
-      }
-    ]
-  },
-  // This lets us debug our react code in chrome dev tools. Errors will have lines and file names
-  // Without this the console says all errors are coming from just coming from bundle.js
-  devtool: "eval-source-map"
+    // This section desribes the transformations we will perform
+    module: {
+        loaders: [{
+            // Only work with files that are in .js or .jsx extension
+            test: /\.jsx?$/,
+            // Webpack to only process files in app folder, avoids unnecessarily processing of
+            // node modules and server files 
+            include: /app/,
+            loader: "babel",
+            query: {
+                // Use these specific transformations
+                presets: ["react", "es2015"]
+            }
+        }]
+    },
+    // This permits debugging react code in chrome dev tools. Errors will have lines and file names.
+    // Without this code, the console would say all errors are coming from bundle.js.
+    devtool: "eval-source-map"
 };

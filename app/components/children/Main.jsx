@@ -1,22 +1,21 @@
-// Contains the main-container div that holds the main layout and navigation. 
-// This component should also be able to hold sub-components Search and Saved
+// Contains main-container div that holds main layout and navigation. 
+// This component should also be able to hold sub-components Search and Saved.
 
 // Include React
 var React = require("react");
 
-// UN COMMENT ALL THESE LATER!
-// Here we include all of the sub-components
+// Include all sub-components
 var Query = require("./Query.jsx");
 var Search = require("./Search.jsx");
 var Saved = require("./Saved.jsx");
 
-// Requiring our helper for making API calls
+// Require helper for making API calls
 var helpers = require("../utils/helpers.js");
 
-// Create the Main Component
+// Create Main Component
 var Main = React.createClass({
 
-  // Here we set a generic state
+  // Set generic state
   getInitialState: function() {
     return {
       apiResults: [],
@@ -25,7 +24,7 @@ var Main = React.createClass({
     };
   },
 
-  // These functions allow children to update the parent.
+  // These functions allow children to update the parent
   _setSearchFeilds: function(topic, start, end) {
     this.setState({ searchTerms: [topic, start, end] });
   },
@@ -35,31 +34,24 @@ var Main = React.createClass({
     this.setState({ mongoResults: newData} );
   },
 
-  // After the Main renders, collect the saved articles from the API endpoint
+  // After the Main renders, collect the saved articles from API endpoint
   componentDidMount: function() {
 
-    // Hit the Mongo API to get saved articles
+    // Hit Mongo API to get saved articles
     helpers.apiGet().then(function(query){
       this.setState({mongoResults: query.data});
     }.bind(this));
-
-    // console.log('API Results')
-    // console.log(this.state.apiResults)
-
-    // console.log('')
-    // console.log('Mongo Results')
-    // console.log(this.state.mongoResults)
   },
 
 
-  // If the component changes (i.e. if a search is entered)...
+  // If component changes (i.e. if a search is entered)
   componentDidUpdate: function(prevProps, prevState) {
 
-    // Only hit the API once; i.e. if the prev state does not equal the current
+    // Only hit API once (i.e. if prev state does not equal current)
     if(this.state.searchTerms != prevState.searchTerms){
       // Run the query for the address
       helpers.articleQuery(this.state.searchTerms[0], this.state.searchTerms[1], this.state.searchTerms[2]).then(function(data) {
-        //console.log(data);
+        
         this.setState({ apiResults: data });
       }.bind(this));
     }
@@ -67,7 +59,7 @@ var Main = React.createClass({
   },
 
 
-  // Here we render the function
+  // Render the function
   render: function() {
     return (
 
@@ -89,5 +81,5 @@ var Main = React.createClass({
   }
 });
 
-// Export the component back for use in other files
+// Export component back for use in other files
 module.exports = Main;
