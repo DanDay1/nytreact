@@ -22239,7 +22239,7 @@
 	          React.createElement("br", null),
 	          React.createElement(
 	            "button",
-	            { type: "submit", className: "btn btn-info col-md-offset-5 col-md-2", id: "searchBtn", style: {backgroundColor: "#CBCBCB", color: "black"} },
+	            { type: "submit", className: "btn btn-default col-md-offset-5 col-md-2", id: "searchBtn", style: {backgroundColor: "#E0E0E0"} },
 	            "Search"
 	          )
 	        )
@@ -22380,7 +22380,7 @@
 	                  { className: "input-group-btn" },
 	                  React.createElement(
 	                    "button",
-	                    { className: "btn btn-success", type: "button", onClick: that._handleSave, value: search._id },
+	                    { className: "btn btn-default", type: "button", style: {backgroundColor: "#E0E0E0"}, onClick: that._handleSave, value: search._id },
 	                    "Save"
 	                  )
 	                )
@@ -22424,13 +22424,13 @@
 	
 	      var result = [];
 	
-	      // If get get a result, return only the first 5 articles
+	      // If get get a result, return only the first 10 articles
 	      if (response.data.response.docs[0]) {
 	
 	        for (var i = 0; i < response.data.response.docs.length; i++) {
-	          // Break out of the loop if there are more than 5 entries
+	          // Break out of the loop if there are more than 10 entries
 	
-	          if (i == 5) {
+	          if (i ==10) {
 	            break;
 	          } else {
 	            // Otherwise, push to results array
@@ -24203,7 +24203,7 @@
 	                  { className: "input-group-btn" },
 	                  React.createElement(
 	                    "button",
-	                    { className: "btn btn-danger", type: "button", onClick: that._handleDelete, value: search._id },
+	                    { className: "btn btn-default", type: "button", style: {backgroundColor: "#E0E0E0"}, onClick: that._handleDelete, value: search._id },
 	                    "Remove"
 	                  )
 	                )
