@@ -22217,7 +22217,7 @@
 	          React.createElement("br", null),
 	          React.createElement(
 	            "div",
-	            { className: "form-group col-md-offset-3 col-md-6" },
+	            { className: "form-group col-md-offset-3 col-md-3" },
 	            React.createElement(
 	              "label",
 	              { htmlFor: "startYear" },
@@ -22228,7 +22228,7 @@
 	          React.createElement("br", null),
 	          React.createElement(
 	            "div",
-	            { className: "form-group col-md-offset-3 col-md-6" },
+	            { className: "form-group col-md-offset-0 col-md-3" },
 	            React.createElement(
 	              "label",
 	              { htmlFor: "endYear" },
@@ -22426,13 +22426,13 @@
 	
 	      var result = [];
 	
-	      // If get get a result, return only the first 10 articles
+	      // If get get a result, return only the first 5 articles
 	      if (response.data.response.docs[0]) {
 	
 	        for (var i = 0; i < response.data.response.docs.length; i++) {
-	          // Break out of the loop if there are more than 10 entries
+	          // Break out of the loop if there are more than 5 entries
 	
-	          if (i ==10) {
+	          if (i ==5) {
 	            break;
 	          } else {
 	            // Otherwise, push to results array
