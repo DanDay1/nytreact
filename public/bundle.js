@@ -22339,7 +22339,7 @@
 	        { className: "panel-body" },
 	        React.createElement(
 	          "ul",
-	          { className: "list-group col-md-8 col-md-offset-2" },
+	          { className: "list-group col-md-10 col-md-offset-1" },
 	          this.props.apiResults.map(function (search, i) {
 	
 	            // Build array of articles
@@ -22368,6 +22368,8 @@
 	                      search.headline.main
 	                    )
 	                  ),
+	                  // React.createElement("br", null),
+					// search.pub_date,
 	                  React.createElement(
 	                    "i",
 	                    null,
@@ -24170,7 +24172,7 @@
 	        { className: "panel-body" },
 	        React.createElement(
 	          "ul",
-	          { className: "list-group col-md-8 col-md-offset-2" },
+	          { className: "list-group col-md-10 col-md-offset-1" },
 	          this.props.mongoResults.map(function (search, i) {
 	
 	            return React.createElement(
