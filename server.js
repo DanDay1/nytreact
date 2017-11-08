@@ -20,7 +20,9 @@ app.use(express.static(process.cwd() + '/public'));
 
 
 // Database configuration with Mongoose:
-mongoose.connect('mongodb://localhost/nytreact');
+// mongoose.connect('mongodb://localhost/nytreact');
+
+mongoose.connect( 'mongodb://heroku_h4vhhl2w:8q6mj3hr9k1s0k46tklor55euh@ds251845.mlab.com:51845/heroku_h4vhhl2w');
 var db = mongoose.connection;
 
 // Show Mongoose errors
