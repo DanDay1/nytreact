@@ -17,12 +17,13 @@ app.use(bodyParser.urlencoded({
 // Serve Static Content
 app.use(express.static(process.cwd() + '/public'));
 
-
-
 // Database configuration with Mongoose:
 // mongoose.connect('mongodb://localhost/nytreact');
 
-mongoose.connect( 'mongodb://heroku_h4vhhl2w:8q6mj3hr9k1s0k46tklor55euh@ds251845.mlab.com:51845/heroku_h4vhhl2w');
+//mongoose.connect( 'mongodb://heroku_h4vhhl2w:8q6mj3hr9k1s0k46tklor55euh@ds251845.mlab.com:51845/heroku_h4vhhl2w');
+
+mongoose.Promise = global.Promise; //added this line in for the new db. 
+mongoose.connect( 'mongodb+srv://user100:user100@cluster0.iivt7.mongodb.net/NYTDatabase?retryWrites=true&w=majority' );
 var db = mongoose.connection;
 
 // Show Mongoose errors
