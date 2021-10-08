@@ -8,10 +8,9 @@ var axios = require('axios');
 // NY Times API Request Function
 var articleQuery = function(topic, beginYear, endYear){
 
-  var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
-
-  var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" +
-                  topic + "&begin_date=" + beginYear + "0101" + "&end_date=" + endYear + "1231";
+  var authKey = "YejnNRenf0meh2nulDLOyfTds1GAoigS";
+  
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + topic + "&begin_date=" + beginYear + "0101" + "&end_date=" + endYear + "1231";
 
 
   // Create a JavaScript *Promise*
